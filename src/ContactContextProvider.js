@@ -9,7 +9,7 @@ const ContactContextProvider = ({ children }) => {
 
   //! read
   async function getContacts() {
-    const res = await axios.get(API);
+    const res = await axios.get(`${API}${window.location.search}`);
     setContacts(res.data);
   }
 

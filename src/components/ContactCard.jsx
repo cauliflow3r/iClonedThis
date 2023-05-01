@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { useNavigate } from "react-router-dom";
 import { contactContext } from "../ContactContextProvider";
 
 function ContactCard({ name, lastName, phone, id }) {
   const { deleteContact } = useContext(contactContext);
+  const navigate = useNavigate();
 
   return (
     <Card
@@ -22,7 +24,9 @@ function ContactCard({ name, lastName, phone, id }) {
         <Button variant="warning">{phone}</Button>
       </Card.Body>
       <Card.Body>
-        <Button variant="success">Edit</Button>
+        <Button onClick={() => navigate(`/edit/${id}`)} variant="success">
+          Edit
+        </Button>
         <Button onClick={() => deleteContact(id)} variant="danger">
           Delete
         </Button>
